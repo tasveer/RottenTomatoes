@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BoxOfficeMoviesViewController.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,39 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    
+    // Setup a shared cache of 10 Mb
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
+                                                            diskCapacity:100 * 1024 * 1024
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    
+    // Create the two view controllers, each within a navigation controller
+    BoxOfficeMoviesViewController *boMvc = [[BoxOfficeMoviesViewController alloc] init];
+    boMvc.urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=82frezr4edh95nruytatnkjd";
+    boMvc.title = @"Box Office Movies";
+    
+    UINavigationController *boxOfficeNvc = [[UINavigationController alloc] initWithRootViewController:boMvc];
+    boxOfficeNvc.tabBarItem.title = @"Box Office";
+    boxOfficeNvc.tabBarItem.image = [UIImage imageNamed:@"movie_ticket"];
+    
+    BoxOfficeMoviesViewController *topRvc = [[BoxOfficeMoviesViewController alloc] init];
+    topRvc.urlString = @"http://hapi.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=82frezr4edh95nruytatnkjd";
+    topRvc.title = @"Top Rentals Movies";
+    
+    UINavigationController *topRentalsNvc = [[UINavigationController alloc] initWithRootViewController:topRvc];
+    topRentalsNvc.tabBarItem.title = @"Top DVDs";
+    topRentalsNvc.tabBarItem.image = [UIImage imageNamed:@"dvd_rental"];
+    
+    // Configure the tab bar controller with the two navigation controllers
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[boxOfficeNvc, topRentalsNvc];
+    
+    self.window.rootViewController = tabBarController;
+
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
