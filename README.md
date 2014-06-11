@@ -3,7 +3,7 @@ RottenTomatoes
 
 Demonstrates Pulling of top movies and dvd rentals from Rottentomatoes and presenting in UiTableViews
 
-Time Spent: 20 Hours
+Time Spent: 15 Hours
 
   * Completed all required features
   * Optional features
