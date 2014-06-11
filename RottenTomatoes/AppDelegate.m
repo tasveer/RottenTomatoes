@@ -33,7 +33,7 @@
     boxOfficeNvc.tabBarItem.image = [UIImage imageNamed:@"movie_ticket"];
     
     BoxOfficeMoviesViewController *topRvc = [[BoxOfficeMoviesViewController alloc] init];
-    topRvc.urlString = @"http://hapi.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=82frezr4edh95nruytatnkjd";
+    topRvc.urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=82frezr4edh95nruytatnkjd";
     topRvc.title = @"Top Rentals Movies";
     
     UINavigationController *topRentalsNvc = [[UINavigationController alloc] initWithRootViewController:topRvc];

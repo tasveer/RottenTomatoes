@@ -232,7 +232,6 @@ static  NSUInteger rowHeight = 130;
 -(IBAction)refreshTable:(id)sender
 {
  
-    self.urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=82frezr4edh95nruytatnkjd";
     [ self reloadData ];
     
 }
