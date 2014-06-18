@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle.h>
 
-@interface Movie : NSObject
+
+@interface Movie : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, weak) NSString *title;
 @property (nonatomic, weak) NSString *synopsis;

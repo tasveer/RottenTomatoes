@@ -72,7 +72,8 @@ static  NSUInteger rowHeight = 130;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [ self.movies count];
+    //return [ self.movies count];
+    return [ self.movieList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,6 +83,7 @@ static  NSUInteger rowHeight = 130;
     
     Movie *movie = self.movieList[indexPath.row];
 
+    NSLog(@"movie title: %@", [movie title]);
     movieCell.titleLabel.text = [ movie title];
     movieCell.synopsisLabel.text = [ movie synopsis];
     
